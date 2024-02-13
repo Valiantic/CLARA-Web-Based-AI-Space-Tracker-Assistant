@@ -1,6 +1,7 @@
 import pyttsx3 
 import speech_recognition as sr
 import eel
+import pyjokes
 import time # for delay 
 
 # activationword = 'clara' # for casual conversation featured remove due to algorithm
@@ -56,6 +57,17 @@ def allCommands():
         
     else:
         print("run failed.")
+        
+    if "tell me a joke" in query: # joke
+                speak('Ok, let me think of something funny...')
+                try:
+                    jokeresult = pyjokes.get_joke()
+                    print(jokeresult)
+                    eel.DisplayMessage(jokeresult) 
+                    speak(jokeresult)
+                    print(*"a"[1:5],sep=',')
+                except:
+                     speak('im not in the mood to joke sir')
         
     if "hello clara" in query: # hello clara
         print("Well, Hello there, How can I assist you today")
