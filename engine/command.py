@@ -1,8 +1,13 @@
 import pyttsx3 
 import speech_recognition as sr
 import eel
-import pyjokes
+import pyjokes # joke function
+import wolframalpha # math calculation
 import time # for delay 
+
+# wolframealpha client
+appId = '5R49J7-J888YX9J2V'   # api id for wolframalpha
+wolframClient = wolframalpha.Client(appId)  # appid assignation
 
 # activationword = 'clara' # for casual conversation featured remove due to algorithm
 
@@ -41,6 +46,44 @@ def takecommand():
     
     return query.lower()
 
+def listOrDict(var):  # confidence answer of wolframalpha 
+    if isinstance(var, list):
+        return var[0]['plaintext']
+    else:
+        return var['plaintext']
+    
+def search_wolframAlpha(query = ''): # wolframlpha for mathemical calculation
+    response = wolframClient.query(query)
+    
+    #wolfram alpha was able to resolve the query
+    #number of results returned
+    #list of results. this can also contains subpods???
+    if response['@success'] == 'false':
+        return 'Could not compute data'
+    # query resolved
+    else: 
+        result = ' '
+        # Question
+        pod0 = response['pod'][0]
+        
+        pod1 = response['pod'][1]
+        
+        # Answer containment or has highest confidence value
+        #if its primary of has the title of result then this is the result
+        if (('result') in pod1['@title'].lower()) or (pod1.get('@primary', 'false') == 'true') or ('definition' in pod1['@title'].lower()):
+          #get the results
+          result = listOrDict(pod1['subpod'])
+          # remove the bracketed section
+          return result.split('(')[0]
+        else:
+          question = listOrDict(pod0['subpod'])
+          # remove the bracketed section
+          return question.split('(')[0]
+          #search wikipedia instead
+          speak('Calculation failed. Querying the universal databank.')
+          return search_wikipedia(question)
+      
+
 @eel.expose # allows access to js files
 def allCommands():
     
@@ -67,7 +110,21 @@ def allCommands():
                     speak(jokeresult)
                     print(*"a"[1:5],sep=',')
                 except:
-                     speak('im not in the mood to joke sir')
+                     speak('im not in the mood to joke')
+                     
+    if "solve" in query: # wolframalpha client
+                speak('Got it, calculating and gathering data input')
+                try:
+                    result = search_wolframAlpha(query)
+                    print(result)
+                    eel.DisplayMessage(result) 
+                    speak("The Answer is " + result)
+                    print(*"a"[1:5],sep=',')
+                except:
+                    speak('It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.')    
+                    eel.DisplayMessage("It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.")  
+                    print(*"a"[1:5],sep=',')                 
+    
         
     if "hello clara" in query: # hello clara
         print("Well, Hello there, How can I assist you today")
@@ -90,4 +147,5 @@ def allCommands():
         speak("Hello, I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant, I'm your personal Web-based A.I Assistant.")
         
     eel.ShowHood() # exit the prompt 
+    
     
