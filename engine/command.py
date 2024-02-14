@@ -3,6 +3,7 @@ import speech_recognition as sr
 import eel
 import pyjokes # joke function
 import wolframalpha # math calculation
+import speedtest # internet speedtest
 import time # for delay 
 
 # wolframealpha client
@@ -113,7 +114,7 @@ def allCommands():
                      speak('im not in the mood to joke')
                      
     if "solve" in query: # wolframalpha client
-                speak('Got it, calculating and gathering data input')
+                speak('Alright im on it, calculating and gathering data input')
                 try:
                     result = search_wolframAlpha(query)
                     print(result)
@@ -123,7 +124,21 @@ def allCommands():
                 except:
                     speak('It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.')    
                     eel.DisplayMessage("It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.")  
-                    print(*"a"[1:5],sep=',')                 
+                    print(*"a"[1:5],sep=',')              
+                    
+    if "check internet speedtest" in query:
+                speak('Got it, im measuring your internet speed now')
+                eel.DisplayMessage("Testing your internet speed, please wait...") 
+                print('Testing your internet speed, please wait...')
+                wifi = speedtest.Speedtest()
+                upload_net = wifi.upload()/1048576   #gigabyte 1024*1024 = 1048576 megabyte
+                download_net = wifi.download()/1048576
+                print('Wifi Download Speed is', download_net, 'mbps')
+                print('Wifi Upload Speed is', upload_net, 'mbps')
+                eel.DisplayMessage('Wifi Download Speed is', download_net, 'mbps')
+                eel.DisplayMessage('Wifi Upload Speed is', upload_net, 'mbps')
+                speak(f'Sir, your Wifi Download speed is {download_net}')
+                speak(f'While your Wifi Upload speed is {upload_net}')   
     
         
     if "hello clara" in query: # hello clara
