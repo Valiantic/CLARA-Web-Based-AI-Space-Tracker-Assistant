@@ -137,7 +137,7 @@ def allCommands():
                 print('Wifi Upload Speed is', upload_net, 'mbps')
                 eel.DisplayMessage('Wifi Download Speed is', download_net, 'mbps')
                 eel.DisplayMessage('Wifi Upload Speed is', upload_net, 'mbps')
-                speak(f'Sir, your Wifi Download speed is {download_net}')
+                speak(f'Scan complete, your Wifi Download speed is {download_net}')
                 speak(f'While your Wifi Upload speed is {upload_net}')   
     
         
