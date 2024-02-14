@@ -126,7 +126,7 @@ def allCommands():
                     eel.DisplayMessage("It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.")  
                     print(*"a"[1:5],sep=',')              
                     
-    if "check internet speedtest" in query:
+    if "check internet" in query: # internet speedtest
                 speak('Got it, im measuring your internet speed now')
                 eel.DisplayMessage("Testing your internet speed, please wait...") 
                 print('Testing your internet speed, please wait...')
