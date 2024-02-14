@@ -2,12 +2,11 @@ import os
 import re
 import sqlite3
 import webbrowser
-import pyjokes
+import pyjokes # joke function
 from playsound import playsound
 import eel
 from engine.command import speak 
 from engine.config import ASSISTANT_NAME
-
 
 
 # intro play assistant function
@@ -17,6 +16,7 @@ from engine.helper import extract_yt_term, remove_words
 
 conn = sqlite3.connect("clara.db")
 cursor = conn.cursor()
+
 
 @eel.expose #somehow not working with live server
 def playAssistantSound():
@@ -77,4 +77,8 @@ def PlayYoutube(query): # to play videos on youtube
     
 def joke(query = ''): # humor of clara
     pyjokes.get_joke('en','neutral', max_tokens= 50) 
+    
+
+
+
 
