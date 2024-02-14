@@ -127,7 +127,7 @@ def allCommands():
                     print(*"a"[1:5],sep=',')              
                     
     if "check internet" in query: # internet speedtest
-                speak('Got it, im measuring your internet speed now')
+                speak("Got it, i'm measuring your internet speed now")
                 eel.DisplayMessage("Testing your internet speed, please wait...") 
                 print('Testing your internet speed, please wait...')
                 wifi = speedtest.Speedtest()
