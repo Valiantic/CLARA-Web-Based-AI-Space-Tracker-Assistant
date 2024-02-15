@@ -4,6 +4,7 @@ import eel
 import pyjokes # joke function
 import wolframalpha # math calculation
 import speedtest # internet speedtest
+import wikipedia # search through wikipedia
 import time # for delay 
 
 # wolframealpha client
@@ -83,7 +84,20 @@ def search_wolframAlpha(query = ''): # wolframlpha for mathemical calculation
           #search wikipedia instead
           speak('Calculation failed. Querying the universal databank.')
           return search_wikipedia(question)
-      
+    
+def search_wikipedia(query = ''): # wikipedia library
+    searchResults = wikipedia.search(query)
+    if not searchResults:
+        print('No wikipedia result')
+        return 'No result received'
+    try:
+        wikiPage = wikipedia.page(searchResults[0])
+    except wikipedia.DisambiguationError as error:
+        wikiPage = wikipedia.page(error.options[0])
+    print(wikiPage.title)
+    wikiSummary = str(wikiPage.summary)
+    return wikiSummary
+
 
 @eel.expose # allows access to js files
 def allCommands():
@@ -114,7 +128,7 @@ def allCommands():
                      speak('im not in the mood to joke')
                      
     if "solve" in query: # wolframalpha client
-                speak('Alright im on it, calculating and gathering data input')
+                speak("Alright i'm on it, calculating and gathering data input")
                 try:
                     result = search_wolframAlpha(query)
                     print(result)
@@ -139,7 +153,12 @@ def allCommands():
                 eel.DisplayMessage('Wifi Upload Speed is', upload_net, 'mbps')
                 speak(f'Scan complete, your Wifi Download speed is {download_net}')
                 speak(f'While your Wifi Upload speed is {upload_net}')   
-    
+                
+    if "wikipedia" in query:   # wikipedia system
+                speak("Noted, I'm Accessing the wikipedia library now")
+                eel.DisplayMessage("Noted, I'm Accessing the wikipedia library now") 
+                speak(search_wikipedia(query))
+                eel.DisplayMessage(search_wikipedia(query)) 
         
     if "hello clara" in query: # hello clara
         print("Well, Hello there, How can I assist you today")
