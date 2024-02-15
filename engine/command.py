@@ -84,20 +84,6 @@ def search_wolframAlpha(query = ''): # wolframlpha for mathemical calculation
           #search wikipedia instead
           speak('Calculation failed. Querying the universal databank.')
           return search_wikipedia(question)
-    
-def search_wikipedia(query = ''): # wikipedia library
-    searchResults = wikipedia.search(query)
-    if not searchResults:
-        print('No wikipedia result')
-        return 'No result received'
-    try:
-        wikiPage = wikipedia.page(searchResults[0])
-    except wikipedia.DisambiguationError as error:
-        wikiPage = wikipedia.page(error.options[0])
-    print(wikiPage.title)
-    wikiSummary = str(wikiPage.summary)
-    return wikiSummary
-
 
 @eel.expose # allows access to js files
 def allCommands():
@@ -156,9 +142,13 @@ def allCommands():
                 
     if "wikipedia" in query:   # wikipedia system
                 speak("Noted, I'm Accessing the wikipedia library now")
+                query = query.replace("wikipedia", "")
+                results = wikipedia.summary(query, sentences=2)
                 eel.DisplayMessage("Noted, I'm Accessing the wikipedia library now") 
-                speak(search_wikipedia(query))
-                eel.DisplayMessage(search_wikipedia(query)) 
+                speak("According to Wikipedia")
+                speak(results)
+                eel.DisplayMessage("According to Wikipedia")
+                eel.DisplayMessage(results)
         
     if "hello clara" in query: # hello clara
         print("Well, Hello there, How can I assist you today")
