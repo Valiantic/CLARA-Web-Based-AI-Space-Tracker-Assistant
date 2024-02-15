@@ -143,13 +143,14 @@ def allCommands():
     if "wikipedia" in query:   # wikipedia system
                 speak("Noted, I'm Accessing the wikipedia library now")
                 query = query.replace("wikipedia", "")
-                results = wikipedia.summary(query, sentences=2)
+                results = wikipedia.summary(query, sentences=4)
                 eel.DisplayMessage("Noted, I'm Accessing the wikipedia library now") 
                 speak("According to Wikipedia")
                 speak(results)
                 eel.DisplayMessage("According to Wikipedia")
                 eel.DisplayMessage(results)
-        
+                
+
     if "hello clara" in query: # hello clara
         print("Well, Hello there, How can I assist you today")
         eel.DisplayMessage("Well, Hello there! How can I assist you today?") 
