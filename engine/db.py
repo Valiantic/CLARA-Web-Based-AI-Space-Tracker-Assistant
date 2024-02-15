@@ -15,8 +15,12 @@ query = "CREATE TABLE IF NOT EXISTS web_command(id integer primary key, name VAR
 cursor.execute(query)
 
 # > INSERTION OF WEBSITES WITHIN THE INTERNET MUST COMMENT THIS OR THE DATABASE WILL NOT FETCH
-# query = "INSERT INTO web_command VALUES (null,'messenger', 'https://www.messenger.com/')"
+# query = "INSERT INTO web_command VALUES (null,'chat gpt', 'https://chat.openai.com/')"
 # cursor.execute(query)
+# conn.commit()
+
+# > DELETE A ROW IN A SQLITE3 DATABASE
+# cursor.execute("DELETE FROM web_command WHERE id = ")
 # conn.commit()
 
 
