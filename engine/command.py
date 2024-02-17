@@ -157,9 +157,9 @@ def allCommands():
         speak("Well, Hello there, How can I assist you today")
     
     if "hi clara" in query: # hello clara
-        print("Well, Hi there, How can I help you today?")
-        eel.DisplayMessage("Well, Hi there, How can I help you today?") 
-        speak("Well, Hi there, How can I help you today?")
+        print("Hi there! Thank you for using me, How can I help you today?")
+        eel.DisplayMessage("Hi there! Thank you for using me, How can I help you today?") 
+        speak("Hi there! Thank you for using me, How can I help you today?")
         
     if "how are you" in query: # how are u?
         print("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?")
@@ -175,7 +175,16 @@ def allCommands():
         print("Hello, I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant, I'm your personal Web-based A.I Assistant.")
         eel.DisplayMessage("Hello I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant. I'm your personal Web-based A.I Assistant.") 
         speak("Hello I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant. I'm your personal Web-based A.I Assistant.")
-        
+    
+    if "thank you" in query: # hello clara
+        print("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.")
+        eel.DisplayMessage("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.") 
+        speak("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.")
+    
+    if "kumusta" and "kamusta" in query: # hello clara
+        print("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?")
+        eel.DisplayMessage("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?") 
+        speak("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?")
     
     eel.ShowHood() # exit the prompt 
     
