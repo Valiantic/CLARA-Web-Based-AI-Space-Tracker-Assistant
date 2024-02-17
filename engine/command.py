@@ -176,10 +176,6 @@ def allCommands():
         eel.DisplayMessage("Hello I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant. I'm your personal Web-based A.I Assistant.") 
         speak("Hello I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant. I'm your personal Web-based A.I Assistant.")
         
-    else:
-        print("Apologies i didn't quite understand that, I'm an A.I Language Model and some of my functions are limited as of now, but I'm here and ready to assist you again, how can i help you?")
-        eel.DisplayMessage("Apologies i didn't quite understand that, I'm an A.I Language Model and some of my functions are limited as of now. But I'm here and ready to assist you again, so how can i help you?")
-        speak("Apologies, i didn't quite understand that. I'm an A.I Language Model and some of my functions are limited as of now, but I'm here and ready to assist you again, how can i help you?")
     
     eel.ShowHood() # exit the prompt 
     
