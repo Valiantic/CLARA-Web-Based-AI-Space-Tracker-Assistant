@@ -1,0 +1,58 @@
+DOCUMENTATION
+
+C.L.A.R.A
+(CYBERNETIC LANGAUGE ARTIFICIAL INTELLIGENCE RESPONSE ASSISTANT)
+
+REAL TIME CONVERSATION 
+* COMMAND FUNCTION TO SAY
+
+-hello clara
+-hi clara
+-how are you 
+-who created you
+-tell me about you
+-thank you
+-kumusta
+
+JOKE/HUMOR 
+* COMMAND FUNCTION TO SAY
+
+-tell me a joke = joke result
+
+MATHEMICAL ABILITY 
+* COMMAND FUNCTION TO SAY
+
+-solve + the mathematical problem = mathematical solution
+
+INTERNET SPEEDTEST
+* COMMAND FUNCTION TO SAY
+
+-check internet = speedtest result
+
+ACCESS TO WIKIPEDIA
+* COMMAND FUNCTION TO SAY
+
+-wikipedia + (entity you want to search) = wikipedia result
+
+PLAY VIDEOS ON YOUTUBE
+* COMMAND FUNCTION TO SAY
+
+- play + (video name) + on youtube = playing on youtube + video 
+
+NAVIGATION OF WEBSITES AND APPLICATION USING DATABASE (SQLITE3)
+* COMMAND FUNCTION TO SAY
+
+- open + (list below are apps/sites accesible)
+
+canva
+youtube
+facebook
+messenger
+instagram
+google gemini
+chat gpt
+
+
+
+
+
