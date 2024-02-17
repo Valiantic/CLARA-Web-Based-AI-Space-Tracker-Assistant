@@ -84,8 +84,8 @@ def joke(query = ''): # humor of clara
     pyjokes.get_joke('en','neutral', max_tokens= 50) 
     
 
-# def hotword():  # NOT APPLICABLE DUE TO PRE TRAINED WORDS
-#     porcupine=None
+# def hotword():  # NOT APPLICABLE DUE TO PRE TRAINED WORDS, STILL ACCESSIBLE IF UNCOMMENT
+#     porcupine=None # WILL RUN WITH RUN.PY
 #     paud=None
 #     audio_stream=None
 #     try:
