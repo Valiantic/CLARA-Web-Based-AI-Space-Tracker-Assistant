@@ -152,25 +152,35 @@ def allCommands():
                 
 
     if "hello clara" in query: # hello clara
-        print("Well, Hello there, How can I assist you today")
+        print("Well, Hello there, How can I assist you today?")
         eel.DisplayMessage("Well, Hello there! How can I assist you today?") 
         speak("Well, Hello there, How can I assist you today")
+    
+    if "hi clara" in query: # hello clara
+        print("Well, Hi there, How can I help you today?")
+        eel.DisplayMessage("Well, Hi there, How can I help you today?") 
+        speak("Well, Hi there, How can I help you today?")
         
     if "how are you" in query: # how are u?
         print("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?")
         eel.DisplayMessage("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?") 
-        speak("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have, How can I help you?")
+        speak("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?")
         
     if "who created you" in query: # who created you?
         print("I was created by the brilliant aspiring computer scientist, steven gabriel madali, a second year student in cavite state university carmona campus, taking a bachelors degree in information technology.")
         eel.DisplayMessage("I was created by the brilliant aspiring computer scientist, Steven Gabriel Madali. A second year student in Cavite State University carmona campus. Taking a bachelors degree in information technology.") 
-        speak("I was created by the brilliant aspiring computer scientist, steven gabriel madali, a second year student in cavite state university carmona campus, taking a bachelors degree in information technology.")
+        speak("I was created by the brilliant aspiring computer scientist, Steven Gabriel Madali. A second year student in Cavite State University carmona campus, taking a bachelors degree in Information Technology.")
     
     if "tell me about you" in query: # tell me about you
         print("Hello, I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant, I'm your personal Web-based A.I Assistant.")
         eel.DisplayMessage("Hello I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant. I'm your personal Web-based A.I Assistant.") 
-        speak("Hello, I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant, I'm your personal Web-based A.I Assistant.")
+        speak("Hello I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant. I'm your personal Web-based A.I Assistant.")
         
+    else:
+        print("Apologies i didn't quite understand that, I'm an A.I Language Model and some of my functions are limited as of now, but I'm here and ready to assist you again, how can i help you?")
+        eel.DisplayMessage("Apologies i didn't quite understand that, I'm an A.I Language Model and some of my functions are limited as of now. But I'm here and ready to assist you again, so how can i help you?")
+        speak("Apologies, i didn't quite understand that. I'm an A.I Language Model and some of my functions are limited as of now, but I'm here and ready to assist you again, how can i help you?")
+    
     eel.ShowHood() # exit the prompt 
     
     
