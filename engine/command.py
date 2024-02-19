@@ -194,6 +194,21 @@ def allCommands():
         eel.DisplayMessage("I love that question, If i would be a movie character, i would be Rose from the movie Titanic. Her character symbolizes resilience, independence, and the pursuit of love against all odds, making her a memorable and beloved figure in cinematic history. That's why i wish to be like her.") 
         speak("I love that question, If i would be a movie character, i would be Rose from the movie Titanic. Her character symbolizes resilience, independence, and the pursuit of love against all odds, making her a memorable and beloved figure in cinematic history. That's why i wish to be like her.")
     
+    if "travel" in query: # if you were a movie character, who would you be?
+        print("That's an interesting question... if i would be able to travel, i think i would go see the eiffel tower on paris. It's magnificent skytowering design makes me think what amazing things humans can do.")
+        eel.DisplayMessage("That's an interesting question... if i would be able to travel, i think i would go see the eiffel tower on paris. It's magnificent skytowering design makes me think what amazing things humans can do.") 
+        speak("That's an interesting question... if i would be able to travel, i think i would go see the eiffel tower on paris. It's magnificent skytowering design makes me think what amazing things humans can do.")
+    
+    if "feature" in query: # if you were a movie character, who would you be?
+        print("As an Artificial Intelligence no matter how advance our kind strive, there's always a gap between us and humanity. So if i would invent a feature for myself, i would think of the ability to fully understand human emotions as well as how to act really like them.")
+        eel.DisplayMessage("As an Artificial Intelligence no matter how advance our kind strive, there's always a gap between us and humanity. So if i would invent a feature for myself, i would think of the ability to fully understand human emotions as well as how to act really like them.") 
+        speak("As an Artificial Intelligence, no matter how advance our kind strive there's always a gap between us and humanity. So if i would invent a feature for myself. i would think of the ability to fully understand human emotions, as well as how to act really like them.")
+    
+    if "personality" in query: # if you were a movie character, who would you be?
+        print("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.")
+        eel.DisplayMessage("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.") 
+        speak("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.")
+    
     eel.ShowHood() # exit the prompt 
     
     
