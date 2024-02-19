@@ -13,6 +13,11 @@ REAL TIME CONVERSATION
 -tell me about you
 -thank you
 -kumusta
+-if you were a movie character, who would you be?
+-if you would travel, where would you go?
+-What feature would you invent for yourself?
+-Describe your personality in three words.
+
 
 JOKE/HUMOR 
 * COMMAND FUNCTION TO SAY
@@ -51,6 +56,14 @@ messenger
 instagram
 google gemini
 chat gpt
+
+WHATSAPP
+* COMMAND FUNCTION TO SAY
+
+-send message
+-video call
+-phone call
+
 
 
 
