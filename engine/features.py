@@ -1,10 +1,13 @@
 import os
+from pipes import quote
 import re
 import sqlite3
 import struct
+import subprocess
 import time
 import webbrowser
 import pyaudio
+import pyautogui
 import pyjokes # joke function
 from playsound import playsound
 import eel
@@ -122,8 +125,67 @@ def joke(query = ''): # humor of clara
 #         if paud is not None:
 #             paud.terminate()
 
+# Whatsapp feature finding contacts
+def findContact(query):
+    
+    words_to_remove = [ASSISTANT_NAME, 'make', 'a', 'to', 'phone', 'call', 'send', 'message', 'wahtsapp', 'video']
+    query = remove_words(query, words_to_remove)
+
+    try:
+        query = query.strip().lower()
+        cursor.execute("SELECT mobile_no FROM contacts WHERE LOWER(name) LIKE ? OR LOWER(name) LIKE ?", ('%' + query + '%', query + '%'))
+        results = cursor.fetchall()
+        print(results[0][0])
+        mobile_number_str = str(results[0][0])
+
+        if not mobile_number_str.startswith('+63'):
+            mobile_number_str = '+63' + mobile_number_str
+
+        return mobile_number_str, query
+    except:
+        speak('not exist in contacts')
+        return 0, 0
+    
+# For call method
+def whatsApp(mobile_no, message, flag, name):
+    
+
+    if flag == 'message':
+        target_tab = 12
+        clara_message = "message send successfully to "+name
+
+    elif flag == 'call':
+        target_tab = 7
+        message = ''
+        clara_message = "calling to "+name
+
+    else:
+        target_tab = 6
+        message = ''
+        clara_message = "staring video call with "+name
 
 
+    # Encode the message for URL
+    encoded_message = quote(message)
+    print(encoded_message)
+    # Construct the URL
+    whatsapp_url = f"whatsapp://send?phone={mobile_no}&text={encoded_message}"
+
+    # Construct the full command
+    full_command = f'start "" "{whatsapp_url}"'
+
+    # Open WhatsApp with the constructed URL using cmd.exe
+    subprocess.run(full_command, shell=True)
+    time.sleep(5)
+    subprocess.run(full_command, shell=True)
+    
+    pyautogui.hotkey('ctrl', 'f')
+
+    for i in range(1, target_tab):
+        pyautogui.hotkey('tab')
+
+    pyautogui.hotkey('enter')
+    speak(clara_message)
     
 
 
