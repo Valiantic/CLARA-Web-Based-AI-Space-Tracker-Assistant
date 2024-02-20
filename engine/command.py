@@ -1,3 +1,4 @@
+import webbrowser
 import pyttsx3 
 import speech_recognition as sr
 import eel
@@ -172,6 +173,16 @@ def allCommands():
                 eel.DisplayMessage('Wifi Upload Speed is', upload_net, 'mbps')
                 speak(f'Scan complete, your Wifi Download speed is {download_net}')
                 speak(f'While your Wifi Upload speed is {upload_net}')   
+                
+    if "where is" in query:     # unknown limited gloabal search
+                speak("Copy, searching specified location....")
+                eel.DisplayMessage("Copy,  searching specified location...") 
+                ind = query.lower().split().index("is")
+                location = query.split()[ind + 1:]
+                url = "https://www.google.com/maps/place/" + "".join(location)
+                webbrowser.open(url)
+                speak("This is where" + str(location) + " is. ")
+              
                 
     if "wikipedia" in query:   # wikipedia system
                 speak("Noted, I'm Accessing the wikipedia library now")
