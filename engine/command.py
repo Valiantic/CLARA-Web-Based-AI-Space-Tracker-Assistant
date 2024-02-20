@@ -1,3 +1,4 @@
+import json
 import webbrowser
 import pyttsx3 
 import speech_recognition as sr
@@ -182,8 +183,57 @@ def allCommands():
                 url = "https://www.google.com/maps/place/" + "".join(location)
                 webbrowser.open(url)
                 speak("This is where" + str(location) + " is. ")
-              
+                 
+    if "news" in query:  # international news 20 news result
+                speak("Copy, I'm getting the latest news for you...")
+                eel.DisplayMessage("Copy, I'm getting the latest news for you...") 
+                import requests
+                url = ('https://newsapi.org/v2/top-headlines?'
+                'sources=bbc-news&'
+                'apiKey=035340bb8e60455eb1c9cbe96f75a7d2')
+                try:
+                    response = requests.get(url)
+                except:
+                    speak("I'm sorry, i'm having trouble getting news data, please try again later")
+                news = json.loads(response.text)
                 
+               
+                for new in news["articles"]:
+                    print(str(new["title"]), "\n")
+                    eel.DisplayMessage(str(new["title"])) 
+                    speak(str(new["title"]))
+                    # engine.runAndWait()
+                    
+                    # engine.runAndWait()
+                    print(str(new["description"]), "\n")
+                    eel.DisplayMessage(str(new["description"]), "\n") 
+                    speak(str(new["description"]))
+                    
+                    
+                response.json()
+                
+    if "balita" in query: # local news 20 news result
+                speak("Sige, hayaan mo ako ay kumuha ng mga balita na nangyari ngayon sa pilipinas")
+                eel.DisplayMessage("Sige, hayaan mo ako ay kumuha ng mga balita na nangyari ngayon sa pilipinas") 
+                import requests
+                url = ('https://newsapi.org/v2/top-headlines?'
+                'country=ph&'
+                'apiKey=035340bb8e60455eb1c9cbe96f75a7d2')
+                try:
+                    response = requests.get(url)
+                except:
+                    speak("Pasensiya na, ako ay nahihirapan kumuha ng mga balita sa ngayon.")
+                news = json.loads(response.text)
+                
+                for new in news["articles"]:
+                    print(str(new["title"]), "\n")
+                    eel.DisplayMessage(str(new["title"])) 
+                    speak(str(new["title"]))
+                    # engine.runAndWait()
+                    
+                response.json()
+                
+              
     if "wikipedia" in query:   # wikipedia system
                 speak("Noted, I'm Accessing the wikipedia library now")
                 query = query.replace("wikipedia", "")
