@@ -103,7 +103,7 @@ def allCommands():
             contact_no, name = findContact(query)
             if(contact_no != 0):
 
-                if "send message" in query:
+                if "send message" in query:   # >> WHATSAPP SYSTEM <<
                     flag = 'message'
                     speak("what message to send")
                     query = takecommand()
@@ -143,7 +143,21 @@ def allCommands():
                 except:
                     speak('It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.')    
                     eel.DisplayMessage("It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.")  
+                    print(*"a"[1:5],sep=',')                  
+                    
+    if "what is" and "who is" in query: # wolframalpha client
+                speak("Wait let me check on it...")
+                try:
+                    result = search_wolframAlpha(query)
+                    print(result)
+                    eel.DisplayMessage(result) 
+                    speak("" + result)
+                    print(*"a"[1:5],sep=',')
+                except:       
+                    speak("Apologies looks like i'm unable to identify the question you ask. Perhaps giving me another one might do the trick.")    
+                    eel.DisplayMessage("Apologies looks like i'm unable to identify the question you ask. Perhaps giving me another one might do the trick.")  
                     print(*"a"[1:5],sep=',')              
+                     
                     
     if "check internet" in query: # internet speedtest
                 speak("Got it, i'm measuring your internet speed now")
