@@ -3,6 +3,7 @@ import webbrowser
 import pyttsx3 
 import speech_recognition as sr
 import eel
+import requests
 import pyjokes # joke function
 import wolframalpha # math calculation
 import speedtest # internet speedtest
@@ -235,8 +236,29 @@ def allCommands():
                     # engine.runAndWait()
                     
                 response.json()
-                
-              
+    
+    # if "weather" in query: > JSON REQUEST ERROR?!
+    #             # key = ""
+    #             # weather_url = "http://api.openweathermap.org/data/2.5/weather?"
+    #             # ind = query.split().index("in")
+    #             # location = query.split()[ind + 1:]
+    #             # location = "".join(location)
+    #             # url = weather_url + "appid=" + key + "&q=" + location
+    #             # js = requests.get(url).json()
+    #             # if js["cod"] != "404":
+    #             #     weather = js["main"]
+    #             #     temperature = weather["temp"]
+    #             #     temperature = temperature - 273.15
+    #             #     humidity = weather["humidity"]
+    #             #     desc = js["weather"][0]["description"]
+    #             #     weather_response = "The temperature in Celsius is " + str(temperature) + " the humidity is"
+    #             #     + str(humidity) + " and weather description is " + str(desc)
+    #             #     speak(weather_response)
+    #             #     eel.DisplayMessage(weather_response) 
+    #             # else:
+    #             #     speak("City not found, please try again.")
+    #             #     eel.DisplayMessage("City not found, please try again.") 
+                         
     if "wikipedia" in query:   # wikipedia system
                 speak("Noted, I'm Accessing the wikipedia library now")
                 query = query.replace("wikipedia", "")
