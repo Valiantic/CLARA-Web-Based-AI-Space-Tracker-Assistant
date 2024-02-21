@@ -185,7 +185,7 @@ def allCommands():
                 speak("This is where" + str(location) + " is. ")
                  
     if "news" in query:  # international news 20 news result
-                speak("Copy, I'm getting the latest news for you...")
+                speak("Copy, I'm getting the latest international news for you...")
                 eel.DisplayMessage("Copy, I'm getting the latest news for you...") 
                 import requests
                 url = ('https://newsapi.org/v2/top-headlines?'
@@ -197,7 +197,8 @@ def allCommands():
                     speak("I'm sorry, i'm having trouble getting news data, please try again later")
                 news = json.loads(response.text)
                 
-               
+                speak("Here are some 20 headlines for today.")
+                eel.DisplayMessage("Here are some 20 headlines for today.") 
                 for new in news["articles"]:
                     print(str(new["title"]), "\n")
                     eel.DisplayMessage(str(new["title"])) 
@@ -213,8 +214,8 @@ def allCommands():
                 response.json()
                 
     if "balita" in query: # local news 20 news result
-                speak("Sige, hayaan mo ako ay kumuha ng mga balita na nangyari ngayon sa pilipinas")
-                eel.DisplayMessage("Sige, hayaan mo ako ay kumuha ng mga balita na nangyari ngayon sa pilipinas") 
+                speak("Copy, I'm getting the latest local news for you...")
+                eel.DisplayMessage("Copy, I'm getting the latest local news for you...") 
                 import requests
                 url = ('https://newsapi.org/v2/top-headlines?'
                 'country=ph&'
@@ -225,6 +226,8 @@ def allCommands():
                     speak("Pasensiya na, ako ay nahihirapan kumuha ng mga balita sa ngayon.")
                 news = json.loads(response.text)
                 
+                speak("Here are some 20 headlines for today in the philippines.")
+                eel.DisplayMessage("Here are some 20 headlines for today in the philippines.") 
                 for new in news["articles"]:
                     print(str(new["title"]), "\n")
                     eel.DisplayMessage(str(new["title"])) 
