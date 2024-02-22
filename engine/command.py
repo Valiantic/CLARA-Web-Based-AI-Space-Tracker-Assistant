@@ -280,6 +280,11 @@ def allCommands():
         eel.DisplayMessage("Hi there! Thank you for using me, How can I help you today?") 
         speak("Hi there! Thank you for using me, How can I help you today?")
         
+    if "everyone" in query: # hi clara
+        print("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.")
+        eel.DisplayMessage("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.") 
+        speak("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.")
+        
     if "how are you" in query: # how are u?
         print("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?")
         eel.DisplayMessage("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?") 
