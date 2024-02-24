@@ -10,6 +10,7 @@ import speedtest # internet speedtest
 import wikipedia # search through wikipedia
 import time # for delay 
 
+
 # wolframealpha client
 appId = '5R49J7-J888YX9J2V'   # api id for wolframalpha
 wolframClient = wolframalpha.Client(appId)  # appid assignation
@@ -147,20 +148,7 @@ def allCommands():
                     speak('It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.')    
                     eel.DisplayMessage("It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.")  
                     print(*"a"[1:5],sep=',')                  
-                    
-    if "what is" and "who is" in query: # wolframalpha client
-                speak("Wait let me check on it...")
-                try:
-                    result = search_wolframAlpha(query)
-                    print(result)
-                    eel.DisplayMessage(result) 
-                    speak("" + result)
-                    print(*"a"[1:5],sep=',')
-                except:       
-                    speak("Apologies looks like i'm unable to identify the question you ask. Perhaps giving me another one might do the trick.")    
-                    eel.DisplayMessage("Apologies looks like i'm unable to identify the question you ask. Perhaps giving me another one might do the trick.")  
-                    print(*"a"[1:5],sep=',')              
-                     
+                                   
                     
     if "check internet" in query: # internet speedtest
                 speak("Got it, i'm measuring your internet speed now")
@@ -177,7 +165,7 @@ def allCommands():
                 speak(f'While your Wifi Upload speed is {upload_net}')   
                 
     if "where is" in query:     # unknown limited gloabal search
-                speak("Copy, searching specified location....")
+                speak("Searching selected location....")
                 eel.DisplayMessage("Copy,  searching specified location...") 
                 ind = query.lower().split().index("is")
                 location = query.split()[ind + 1:]
@@ -237,27 +225,27 @@ def allCommands():
                     
                 response.json()
     
-    # if "weather" in query: > JSON REQUEST ERROR?!
-    #             # key = ""
-    #             # weather_url = "http://api.openweathermap.org/data/2.5/weather?"
-    #             # ind = query.split().index("in")
-    #             # location = query.split()[ind + 1:]
-    #             # location = "".join(location)
-    #             # url = weather_url + "appid=" + key + "&q=" + location
-    #             # js = requests.get(url).json()
-    #             # if js["cod"] != "404":
-    #             #     weather = js["main"]
-    #             #     temperature = weather["temp"]
-    #             #     temperature = temperature - 273.15
-    #             #     humidity = weather["humidity"]
-    #             #     desc = js["weather"][0]["description"]
-    #             #     weather_response = "The temperature in Celsius is " + str(temperature) + " the humidity is"
-    #             #     + str(humidity) + " and weather description is " + str(desc)
-    #             #     speak(weather_response)
-    #             #     eel.DisplayMessage(weather_response) 
-    #             # else:
-    #             #     speak("City not found, please try again.")
-    #             #     eel.DisplayMessage("City not found, please try again.") 
+    # if "what is the weather in" in query: # JSON REQUEST ERROR?!
+    #             key = "20fdfb76008f0d97399a7057b61972e9"
+    #             weather_url = "http://api.openweathermap.org/data/2.5/weather?"
+    #             ind = query.split().index("in")
+    #             location = query.split()[ind + 1:]
+    #             location = "".join(location)
+    #             url = weather_url + "appid=" + key + "&q=" + location
+    #             js = requests.get(url).json()
+    #             if js["cod"] != "404":
+    #                 weather = js["main"]
+    #                 temperature = weather["temp"]
+    #                 temperature = temperature - 273.15
+    #                 humidity = weather["humidity"]
+    #                 desc = js["weather"][0]["description"]
+    #                 weather_response = "The temperature in Celsius is " + str(temperature) + " the humidity is"
+    #                 + str(humidity) + " and weather description is " + str(desc)
+    #                 speak(weather_response)
+    #                 eel.DisplayMessage(weather_response) 
+    #             else:
+    #                 speak("City not found, please try again.")
+    #                 eel.DisplayMessage("City not found, please try again.") 
                          
     if "wikipedia" in query:   # wikipedia system
                 speak("Noted, I'm Accessing the wikipedia library now")
