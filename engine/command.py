@@ -318,6 +318,11 @@ def allCommands():
         eel.DisplayMessage("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.") 
         speak("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.")
     
+    if "what can you say about chat gpt" in query: # if you were a movie character, who would you be?
+        print("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha")
+        eel.DisplayMessage("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha") 
+        speak("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha")
+    
     eel.ShowHood() # exit the prompt 
     
     
