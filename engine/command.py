@@ -24,6 +24,7 @@ def speak(text):
     engine.setProperty('rate', 145)
     eel.DisplayMessage(text) 
     engine.say(text)
+    eel.receiverText(text)
     engine.runAndWait()
     
 
@@ -95,8 +96,10 @@ def allCommands(message=1):
     if message == 1:
         query = takecommand()  #chatfunction
         print(query)
+        eel.senderText(query)
     else:
         query = message
+        eel.senderText(query)
     
     
     if "open" in query:
@@ -262,12 +265,12 @@ def allCommands(message=1):
                 eel.DisplayMessage(results)
                 
 
-    if "hello clara" in query: # hello clara
+    if "hello clara" and "hello" in query: # hello clara
         print("Well, Hello there, How can I assist you today?")
         eel.DisplayMessage("Well, Hello there! How can I assist you today?") 
         speak("Well, Hello there, How can I assist you today")
     
-    if "hi clara" in query: # hi clara
+    if "hi clara" and "hi" in query: # hi clara
         print("Hi there! Thank you for using me, How can I help you today?")
         eel.DisplayMessage("Hi there! Thank you for using me, How can I help you today?") 
         speak("Hi there! Thank you for using me, How can I help you today?")
