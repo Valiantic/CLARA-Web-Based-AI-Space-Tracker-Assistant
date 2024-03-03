@@ -90,10 +90,14 @@ def search_wolframAlpha(query = ''): # wolframlpha for mathemical calculation
           return search_wikipedia(question)
 
 @eel.expose # allows access to js files
-def allCommands():
+def allCommands(message=1):
     
-    query = takecommand()
-    print(query)
+    if message == 1:
+        query = takecommand()  #chatfunction
+        print(query)
+    else:
+        query = message
+    
     
     if "open" in query:
         from engine.features import openCommand
