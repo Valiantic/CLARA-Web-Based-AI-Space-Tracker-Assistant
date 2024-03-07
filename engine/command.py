@@ -175,7 +175,7 @@ def allCommands(message=1):
                 speak("Searching selected location....")
                 eel.DisplayMessage("Copy,  searching specified location...") 
                 ind = query.lower().split().index("is")
-                location = query.split()[ind + 1:]
+                location = query.split()[ind + 2:]
                 url = "https://www.google.com/maps/place/" + "".join(location)
                 webbrowser.open(url)
                 speak("This is where" + str(location) + " is. ")
