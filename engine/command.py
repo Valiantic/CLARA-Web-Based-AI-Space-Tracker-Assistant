@@ -231,6 +231,15 @@ def allCommands(message=1):
                     # engine.runAndWait()
                     
                 response.json()
+                
+    if "food recommendation" in query or "food reco" in query or "i'm hungry" in query:
+            from engine.advice_module import Foodrecommendation
+            Foodrecommendation(query)
+    
+    if "book recommendation" in query or "book reco" in query or "ano pwede basahin" in query:
+            from engine.advice_module import Bookdrecommenadtion
+            Bookdrecommenadtion(query)
+
     
     # if "what is the weather in" in query: # JSON REQUEST ERROR?!
     #             key = "20fdfb76008f0d97399a7057b61972e9"
@@ -271,9 +280,9 @@ def allCommands(message=1):
         speak("Well, Hello there, How can I assist you today")
     
     if "hi clara" and "hi" in query: # hi clara
-        print("Hi there! Thank you for using me, How can I help you today?")
-        eel.DisplayMessage("Hi there! Thank you for using me, How can I help you today?") 
-        speak("Hi there! Thank you for using me, How can I help you today?")
+        print("Hi there! Thank you for using me, How can I help you today")
+        eel.DisplayMessage("Hi there! Thank you for using me, How can I help you today") 
+        speak("Hi there! Thank you for using me, How can I help you today")
         
     if "everyone" in query: # hi clara
         print("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.")
