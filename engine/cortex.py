@@ -58,3 +58,58 @@ def Bookdrecommenadtion(query):
             
         print(random_bookideas)
         speak(random_bookideas)
+        
+# >> APPRECIATION <<
+def Appreciation(query):
+    
+        #Collection of appreciation words 
+        appreciations = ["Thank you for having the courage to tell me. I appreciate it so much. Life could be pretty " +
+                      "heavy if you carry it all at once. try to take a rest and release those things that brings burden to you.",
+                      
+                      "Your body is wise to tell you it needs a break. Listen to it and recharge, you'll be back at your best soon.",
+                      
+                      "Don't worry about slowing down today. Sometimes, even superheroes need to nap to save the world tomorrow.",
+                      
+                      "The world will still be here when you wake up feeling refreshed. Take care of yourself, and the rest can wait.",
+                      
+                      "You're not lazy for being tired, you're human. Listen to your body and prioritize rest, it's the most productive thing you can do right now."
+                      ]
+        
+        random_appreciations = random.choice(appreciations)
+            
+        print(random_appreciations)
+        speak(random_appreciations)
+        
+# >> Space trivia <<
+def Spacetrivia(query):
+    
+        #Collection of appreciation words 
+        aboutspace = ["Outer space is virtually silent because sound waves require a medium, like air or water, " + 
+                      "to travel. The near-vacuum of space lacks the necessary density for sound to propagate.",
+                      
+                      "While the first human steps on the Moon were made in 1969, the lack of atmosphere and " +
+                      "moisture means these footprints are expected to remain largely undisturbed for millions of " +
+                      "years.",
+                      
+                      "Our Sun, despite being a massive star, could actually fit over 1 million Earths within its volume. " +
+                      "This showcases the immense scale of celestial objects.",
+                      
+                      "The twinkling of stars we see at night is not due to the stars themselves, but rather the Earth's atmosphere " +
+                      "causing distortions in the starlight as it travels through it. In space, stars would appear to shine steadily.",
+                      
+                      "When you look at distant stars and galaxies, you're essentially seeing them in the past. Since light travels " + 
+                      "at a finite speed, the farther an object is, the longer it takes its light to reach us, offering a glimpse into the " +
+                      "universe's vast history."
+                      ]
+        
+        random_aboutspace = random.choice(aboutspace)
+            
+        print(random_aboutspace)
+        speak(random_aboutspace)
+        
+        
+
+
+        
+        
+
