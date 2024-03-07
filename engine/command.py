@@ -232,14 +232,25 @@ def allCommands(message=1):
                     
                 response.json()
                 
+    # recommending a food to eat
     if "food recommendation" in query or "food reco" in query or "i'm hungry" in query:
-            from engine.advice_module import Foodrecommendation
+            from engine.cortex import Foodrecommendation
             Foodrecommendation(query)
     
+    # recommending a book to read
     if "book recommendation" in query or "book reco" in query or "ano pwede basahin" in query:
-            from engine.advice_module import Bookdrecommenadtion
+            from engine.cortex import Bookdrecommenadtion
             Bookdrecommenadtion(query)
 
+    # appreciation for a tiring day
+    if "I'm tired" in query or "pagod" in query or "di ko na kaya" in query:
+            from engine.cortex import Appreciation
+            Appreciation(query)
+            
+    # appreciation for a tiring day
+    if "tell me about space" in query or "trivia about space" in query or "space trivia" in query:
+            from engine.cortex import Spacetrivia
+            Spacetrivia(query)
     
     # if "what is the weather in" in query: # JSON REQUEST ERROR?!
     #             key = "20fdfb76008f0d97399a7057b61972e9"
