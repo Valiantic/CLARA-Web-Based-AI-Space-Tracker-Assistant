@@ -15,6 +15,7 @@ REAL TIME CONVERSATION
 -if you would travel, where would you go?
 -What feature would you invent for yourself?
 -Describe your personality in three words.
+-pagod
 
 
 JOKE/HUMOR 
@@ -77,6 +78,10 @@ USER INPUT CHAT ENABLED
 
 CHAT HISTORY
 
+FOOD RECOMENDATION
 
+BOOK RECOMENDATION
+
+SPACE TRIVIA
 
 
