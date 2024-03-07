@@ -284,6 +284,13 @@ def allCommands(message=1):
                 eel.DisplayMessage("According to Wikipedia")
                 eel.DisplayMessage(results)
                 
+    #rock paper scissor game
+    if "play rock paper scissor" in query:
+              from engine.rockpaperscissor import game_play
+              speak("Ok then let's go, i've been waiting for you to ask for that, let's play rock paper and scissor then")
+              eel.DisplayMessage("Ok then let's go, i've been waiting for you to ask for that, let's play rock paper and scissor then") 
+              game_play()
+                
 
     if "hello clara" and "hello" in query: # hello clara
         print("Well, Hello there, How can I assist you today?")
