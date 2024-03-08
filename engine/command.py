@@ -149,7 +149,7 @@ def allCommands(message=1):
                 except:
                      speak('im not in the mood to joke')
                      
-    if "solve" in query: # wolframalpha client
+    if "solve" in query or "calculate" in query: # wolframalpha client
                 speak("Alright i'm on it, calculating and gathering data input")
                 try:
                     result = search_wolframAlpha(query)
@@ -239,12 +239,12 @@ def allCommands(message=1):
                 response.json()
                 
     # recommending a food to eat
-    if "food recommendation" in query or "food reco" in query or "nagugutom ako" in query or "food i could" in query:
+    if "food recommendation" in query or "food reco" in query or "nagugutom ako" in query or "food i could" in query or "food to eat" in query:
             from engine.cortex import Foodrecommendation
             Foodrecommendation(query)
     
     # recommending a book to read
-    if "book recommendation" in query or "book reco" in query or "pwede basahin" in query or "book i could" in query: 
+    if "book recommendation" in query or "book reco" in query or "pwede basahin" in query or "book i could" in query or "book to read" in query: 
             from engine.cortex import Bookdrecommenadtion
             Bookdrecommenadtion(query)
 
@@ -310,15 +310,20 @@ def allCommands(message=1):
               game_play()
                 
 
-    if "hello clara" and "hello" in query: # hello clara
+    if "hello clara" in query or "hello" in query: # hello clara
         print("Well, Hello there, How can I assist you today?")
         eel.DisplayMessage("Well, Hello there! How can I assist you today?") 
         speak("Well, Hello there, How can I assist you today")
     
-    if "hi clara" and "hi" in query: # hi clara
+    if "hi clara" in query or "hi" in query: # hi clara
         print("Hi there! Thank you for using me, How can I help you today")
         eel.DisplayMessage("Hi there! Thank you for using me, How can I help you today") 
         speak("Hi there! Thank you for using me, How can I help you today")
+        
+    if "what's up" in query or "wazzup" in query: # wazzup clara
+        print("Yow what's up! how are we doing today yo?")
+        eel.DisplayMessage("Yow what's up! how are we doing today yo?") 
+        speak("Yow what's up! how are we doing today yo?")
         
     if "everyone" in query: # hi clara
         print("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.")
@@ -345,7 +350,7 @@ def allCommands(message=1):
         eel.DisplayMessage("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.") 
         speak("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.")
     
-    if "kumusta" and "kamusta" in query: # kumusta
+    if "kumusta" in query or "kamusta" in query: # kumusta
         print("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?")
         eel.DisplayMessage("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?") 
         speak("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?")
