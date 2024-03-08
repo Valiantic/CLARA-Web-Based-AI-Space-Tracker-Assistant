@@ -89,6 +89,12 @@ def search_wolframAlpha(query = ''): # wolframlpha for mathemical calculation
           #search wikipedia instead
           speak('Calculation failed. Querying the universal databank.')
           return search_wikipedia(question)
+      
+def wiki_person(text):  # wikipedia person or thing
+    list_wiki = text.split()
+    for i in range(0, len(list_wiki)):
+        if i + 3 <= len(list_wiki) - 1 and list_wiki[i].lower() == "who" and list_wiki[i + 1].lower() == "is":
+            return list_wiki[i + 2] + " " + list_wiki[i + 3]
 
 @eel.expose # allows access to js files
 def allCommands(message=1):
@@ -233,12 +239,12 @@ def allCommands(message=1):
                 response.json()
                 
     # recommending a food to eat
-    if "food recommendation" in query or "food reco" in query or "i'm hungry" in query:
+    if "food recommendation" in query or "food reco" in query or "nagugutom ako" in query or "food i could" in query:
             from engine.cortex import Foodrecommendation
             Foodrecommendation(query)
     
     # recommending a book to read
-    if "book recommendation" in query or "book reco" in query or "ano pwede basahin" in query:
+    if "book recommendation" in query or "book reco" in query or "pwede basahin" in query or "book i could" in query: 
             from engine.cortex import Bookdrecommenadtion
             Bookdrecommenadtion(query)
 
@@ -284,6 +290,18 @@ def allCommands(message=1):
                 eel.DisplayMessage("According to Wikipedia")
                 eel.DisplayMessage(results)
                 
+    
+    if "who is" in query:       # wikipedia person search system !LIMITED SEARCH!
+                    print("Ok let me check on it...")
+                    eel.DisplayMessage("Ok let me check on it...")
+                    speak("Ok let me check on it...")
+                    person = wiki_person(query)
+                    wiki = wikipedia.summary(person, sentences=2)
+                    print(wiki)
+                    eel.DisplayMessage(wiki)
+                    speak(wiki)
+   
+                    
     #rock paper scissor game
     if "play rock paper scissor" in query:
               from engine.rockpaperscissor import game_play
