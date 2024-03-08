@@ -1,3 +1,4 @@
+
 C.L.A.R.A
 (CYBERNETIC LANGAUGE ARTIFICIAL INTELLIGENCE RESPONSE ASSISTANT)
 
@@ -37,6 +38,7 @@ ACCESS TO WIKIPEDIA
 * COMMAND FUNCTION TO SAY
 
 -wikipedia + (entity you want to search) = wikipedia result
+-who is + (person you want to search = person info 
 
 PLAY VIDEOS ON YOUTUBE
 * COMMAND FUNCTION TO SAY
