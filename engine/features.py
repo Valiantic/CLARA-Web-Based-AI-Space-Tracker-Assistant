@@ -8,6 +8,7 @@ import time
 import webbrowser
 import pyaudio
 import pyautogui
+import random
 import pyjokes # joke function
 from playsound import playsound
 import eel
@@ -21,6 +22,7 @@ import pywhatkit as kit
 import pvporcupine
 
 from engine.helper import extract_yt_term, remove_words
+from hugchat import hugchat
 
 conn = sqlite3.connect("clara.db")
 cursor = conn.cursor()
@@ -125,6 +127,8 @@ def joke(query = ''): # humor of clara
 #         if paud is not None:
 #             paud.terminate()
 
+# >> WHATSAPP SYSTEM <<
+
 # Whatsapp feature finding contacts
 def findContact(query):
     
@@ -187,6 +191,21 @@ def whatsApp(mobile_no, message, flag, name):
     pyautogui.hotkey('enter')
     speak(clara_message)
     
+# >> WHATSAPP SYSTEM <<
+
+
+# >> CHATBOT HUGGING CHAT FUNCTION <<
+def chatBot(query):
+    user_input = query.lower()
+    chatbot = hugchat.ChatBot(cookie_path="engine\cookies.json")
+    id = chatbot.new_conversation()
+    chatbot.change_conversation(id)
+    response =  chatbot.chat(user_input)
+    print(response)
+    speak(response)
+    return response
+
+#9:36 .gitignore
 
 
 
