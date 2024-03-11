@@ -18,6 +18,7 @@ wolframClient = wolframalpha.Client(appId)  # appid assignation
 # activationword = 'clara' # for casual conversation featured remove due to algorithm
 
 def speak(text):
+    text = str(text)
     engine = pyttsx3.init('sapi5')
     voices = engine.getProperty('voices') 
     engine.setProperty('voice', voices[1].id)
@@ -133,7 +134,9 @@ def allCommands(message=1):
                 whatsApp(contact_no, query, flag, name)
         
     else:
-        print("run failed.")
+        from engine.features import chatBot  # catch whenever unknown command 
+        chatBot(query)
+        # print("run failed.")
         # fixed later
         # eel.DisplayMessage("Apologies, i didn't quite understand that. I'm an A.I Language Model and some of my functions are limited as of now. But i'm willing to assist you in anyways possible. How can i help you?") 
         # speak("Apologies, i didn't quite understand that. I'm an A.I Language Model and some of my functions are limited as of now. But i'm willing to assist you in anyways possible. How can i help you?")
