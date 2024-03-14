@@ -134,6 +134,9 @@ def allCommands(message=1):
                 whatsApp(contact_no, query, flag, name)
         
     else:
+        print("I'm Processing your request now, please wait...")
+        eel.DisplayMessage("I'm Processing your request now, please wait...")
+        speak("I'm Processing your request now, please wait...")
         from engine.features import chatBot  # catch whenever unknown command 
         chatBot(query)
         # print("run failed.")
