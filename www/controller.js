@@ -1,6 +1,7 @@
 $(document).ready(function(){
      
-    // Display Speak Message 
+    // Display Speak Message
+    // Display text 
     eel.expose(DisplayMessage)
     function DisplayMessage(message) {
 
