@@ -133,43 +133,7 @@ def allCommands(message=1):
                     
                 whatsApp(contact_no, query, flag, name)
         
-    else:
-        print("I'm Processing your request now, please wait...")
-        eel.DisplayMessage("I'm Processing your request now, please wait...")
-        speak("I'm Processing your request now, please wait...")
-        from engine.features import chatBot  # catch whenever unknown command 
-        chatBot(query)
-        # print("run failed.")
-        # fixed later
-        # eel.DisplayMessage("Apologies, i didn't quite understand that. I'm an A.I Language Model and some of my functions are limited as of now. But i'm willing to assist you in anyways possible. How can i help you?") 
-        # speak("Apologies, i didn't quite understand that. I'm an A.I Language Model and some of my functions are limited as of now. But i'm willing to assist you in anyways possible. How can i help you?")
-        
-    if "tell me a joke" in query: # joke
-                speak('Ok, let me think of something funny...')
-                try:
-                    jokeresult = pyjokes.get_joke()
-                    print(jokeresult)
-                    eel.DisplayMessage(jokeresult) 
-                    speak(jokeresult)
-                    print(*"a"[1:5],sep=',')
-                except:
-                     speak('im not in the mood to joke')
-                     
-    if "solve" in query or "calculate" in query: # wolframalpha client
-                speak("Alright i'm on it, calculating and gathering data input")
-                try:
-                    result = search_wolframAlpha(query)
-                    print(result)
-                    eel.DisplayMessage(result) 
-                    speak("The Answer is " + result)
-                    print(*"a"[1:5],sep=',')
-                except:
-                    speak('It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.')    
-                    eel.DisplayMessage("It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.")  
-                    print(*"a"[1:5],sep=',')                  
-                                   
-                    
-    if "check internet" in query: # internet speedtest
+    elif "check internet" in query: # internet speedtest
                 speak("Got it, i'm measuring your internet speed now")
                 eel.DisplayMessage("Testing your internet speed, please wait...") 
                 print('Testing your internet speed, please wait...')
@@ -181,7 +145,41 @@ def allCommands(message=1):
                 eel.DisplayMessage('Wifi Download Speed is', download_net, 'mbps')
                 eel.DisplayMessage('Wifi Upload Speed is', upload_net, 'mbps')
                 speak(f'Scan complete, your Wifi Download speed is {download_net}')
-                speak(f'While your Wifi Upload speed is {upload_net}')   
+                speak(f'While your Wifi Upload speed is {upload_net}')    
+        
+    else:
+        print("I'm Processing your request now, please wait...")
+        eel.DisplayMessage("I'm Processing your request now, please wait...")
+        speak("I'm Processing your request now, please wait...")
+        from engine.features import chatBot  # catch whenever unknown command 
+        chatBot(query)
+      
+        
+    if "tell me a joke" in query: # joke
+                speak('Ok, let me think of something funny...')
+                try:
+                    jokeresult = pyjokes.get_joke()
+                    print(jokeresult)
+                    eel.DisplayMessage(jokeresult) 
+                    speak(jokeresult)
+                    print(*"a"[1:5],sep=',')
+                except:
+                     speak('im not in the mood to joke')
+                eel.ShowHood()
+                 
+    if "solve" in query or "calculate" in query: # wolframalpha client
+                speak("Alright i'm on it, calculating and gathering data input")
+                try:
+                    result = search_wolframAlpha(query)
+                    print(result)
+                    eel.DisplayMessage(result) 
+                    speak("The Answer is " + result)
+                    print(*"a"[1:5],sep=',')
+                except:
+                    speak('It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.')    
+                    eel.DisplayMessage("It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.")  
+                    print(*"a"[1:5],sep=',')       
+                    
                 
     if "where is" in query:     # unknown limited gloabal search
                 speak("Searching selected location....")
@@ -253,7 +251,7 @@ def allCommands(message=1):
     if "book recommendation" in query or "book reco" in query or "pwede basahin" in query or "book i could" in query or "book to read" in query: 
             from engine.cortex import Bookdrecommenadtion
             Bookdrecommenadtion(query)
-
+           
     # appreciation for a tiring day
     if "I'm tired" in query or "pagod" in query or "di ko na kaya" in query:
             from engine.cortex import Appreciation
