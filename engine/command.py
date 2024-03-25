@@ -23,7 +23,7 @@ def speak(text):
     voices = engine.getProperty('voices') 
     engine.setProperty('voice', voices[1].id)
     engine.setProperty('rate', 145)
-    eel.DisplayMessage(text) 
+    eel.DisplayMessage(text)         # voice engine generation
     engine.say(text)
     eel.receiverText(text)
     engine.runAndWait()
@@ -339,8 +339,7 @@ def allCommands(message=1):
         print("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha")
         eel.DisplayMessage("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha") 
         speak("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha")
-    
-                
+           
     else:
         print("I'm Processing your request now, please wait...")
         eel.DisplayMessage("I'm Processing your request now, please wait...")
