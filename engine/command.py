@@ -108,7 +108,7 @@ def allCommands(message=1):
         query = message
         eel.senderText(query)
     
-    
+    # keyword handlings 
     if "open" in query:
         from engine.features import openCommand
         openCommand(query)
@@ -132,6 +132,30 @@ def allCommands(message=1):
                     flag = 'video call'
                     
                 whatsApp(contact_no, query, flag, name)
+                
+    elif "tell me a joke" in query: # joke
+                speak('Ok, let me think of something funny...')
+                try:
+                    jokeresult = pyjokes.get_joke()
+                    print(jokeresult)
+                    eel.DisplayMessage(jokeresult) 
+                    speak(jokeresult)
+                    print(*"a"[1:5],sep=',')
+                except:
+                     speak('im not in the mood to joke')
+    
+    elif "solve" in query or "calculate" in query: # wolframalpha client
+                speak("Alright i'm on it, calculating and gathering data input")
+                try:
+                    result = search_wolframAlpha(query)
+                    print(result)
+                    eel.DisplayMessage(result) 
+                    speak("The Answer is " + result)
+                    print(*"a"[1:5],sep=',')
+                except:
+                    speak('It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.')    
+                    eel.DisplayMessage("It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.")  
+                    print(*"a"[1:5],sep=',')       
         
     elif "check internet" in query: # internet speedtest
                 speak("Got it, i'm measuring your internet speed now")
@@ -146,42 +170,8 @@ def allCommands(message=1):
                 eel.DisplayMessage('Wifi Upload Speed is', upload_net, 'mbps')
                 speak(f'Scan complete, your Wifi Download speed is {download_net}')
                 speak(f'While your Wifi Upload speed is {upload_net}')    
-        
-    else:
-        print("I'm Processing your request now, please wait...")
-        eel.DisplayMessage("I'm Processing your request now, please wait...")
-        speak("I'm Processing your request now, please wait...")
-        from engine.features import chatBot  # catch whenever unknown command 
-        chatBot(query)
-      
-        
-    if "tell me a joke" in query: # joke
-                speak('Ok, let me think of something funny...')
-                try:
-                    jokeresult = pyjokes.get_joke()
-                    print(jokeresult)
-                    eel.DisplayMessage(jokeresult) 
-                    speak(jokeresult)
-                    print(*"a"[1:5],sep=',')
-                except:
-                     speak('im not in the mood to joke')
-                eel.ShowHood()
-                 
-    if "solve" in query or "calculate" in query: # wolframalpha client
-                speak("Alright i'm on it, calculating and gathering data input")
-                try:
-                    result = search_wolframAlpha(query)
-                    print(result)
-                    eel.DisplayMessage(result) 
-                    speak("The Answer is " + result)
-                    print(*"a"[1:5],sep=',')
-                except:
-                    speak('It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.')    
-                    eel.DisplayMessage("It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.")  
-                    print(*"a"[1:5],sep=',')       
-                    
                 
-    if "where is" in query:     # unknown limited gloabal search
+    elif "where is" in query:     # unknown limited gloabal search
                 speak("Searching selected location....")
                 eel.DisplayMessage("Copy,  searching specified location...") 
                 ind = query.lower().split().index("is")
@@ -190,7 +180,7 @@ def allCommands(message=1):
                 webbrowser.open(url)
                 speak("This is where" + str(location) + " is. ")
                  
-    if "news" in query:  # international news 20 news result
+    elif "news" in query:  # international news 20 news result
                 speak("Copy, I'm getting the latest international news for you...")
                 eel.DisplayMessage("Copy, I'm getting the latest news for you...") 
                 import requests
@@ -219,7 +209,7 @@ def allCommands(message=1):
                     
                 response.json()
                 
-    if "balita" in query: # local news 20 news result
+    elif "balita" in query: # local news 20 news result
                 speak("Copy, I'm getting the latest local news for you...")
                 eel.DisplayMessage("Copy, I'm getting the latest local news for you...") 
                 import requests
@@ -242,26 +232,122 @@ def allCommands(message=1):
                     
                 response.json()
                 
-    # recommending a food to eat
-    if "food recommendation" in query or "food reco" in query or "nagugutom ako" in query or "food i could" in query or "food to eat" in query:
+     # recommending a food to eat
+    elif "food recommendation" in query or "food reco" in query or "nagugutom ako" in query or "food i could" in query or "food to eat" in query:
             from engine.cortex import Foodrecommendation
             Foodrecommendation(query)
     
     # recommending a book to read
-    if "book recommendation" in query or "book reco" in query or "pwede basahin" in query or "book i could" in query or "book to read" in query: 
+    elif "book recommendation" in query or "book reco" in query or "pwede basahin" in query or "book i could" in query or "book to read" in query: 
             from engine.cortex import Bookdrecommenadtion
             Bookdrecommenadtion(query)
            
     # appreciation for a tiring day
-    if "I'm tired" in query or "pagod" in query or "di ko na kaya" in query:
+    elif "I'm tired" in query or "pagod" in query or "di ko na kaya" in query:
             from engine.cortex import Appreciation
             Appreciation(query)
             
     # appreciation for a tiring day
-    if "tell me about space" in query or "trivia about space" in query or "space trivia" in query:
+    elif "tell me about space" in query or "trivia about space" in query or "space trivia" in query:
             from engine.cortex import Spacetrivia
             Spacetrivia(query)
+            
+    elif "wikipedia" in query:   # wikipedia system
+                speak("Noted, I'm Accessing the wikipedia library now")
+                query = query.replace("wikipedia", "")
+                results = wikipedia.summary(query, sentences=4)
+                eel.DisplayMessage("Noted, I'm Accessing the wikipedia library now") 
+                speak("According to Wikipedia")
+                speak(results)
+                eel.DisplayMessage("According to Wikipedia")
+                eel.DisplayMessage(results)
+                
+     #rock paper scissor game
+    elif "play rock paper scissor" in query:
+              from engine.rockpaperscissor import game_play
+              speak("Ok then let's go, i've been waiting for you to ask for that, let's play rock paper and scissor then")
+              eel.DisplayMessage("Ok then let's go, i've been waiting for you to ask for that, let's play rock paper and scissor then") 
+              game_play()
+                
+    # random conversational modules
+    elif "hello clara" in query or "hello" in query: # hello clara
+        print("Well, Hello there, How can I assist you today?")
+        eel.DisplayMessage("Well, Hello there! How can I assist you today?") 
+        speak("Well, Hello there, How can I assist you today")
     
+    elif "hi clara" in query or "hi" in query: # hi clara
+        print("Hi there! Thank you for using me, How can I help you today")
+        eel.DisplayMessage("Hi there! Thank you for using me, How can I help you today") 
+        speak("Hi there! Thank you for using me, How can I help you today")
+        
+    elif "what's up" in query or "wazzup" in query: # wazzup clara
+        print("Yow what's up! how are we doing today yo?")
+        eel.DisplayMessage("Yow what's up! how are we doing today yo?") 
+        speak("Yow what's up! how are we doing today yo?")
+        
+    elif "everyone" in query: # hi clara
+        print("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.")
+        eel.DisplayMessage("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.") 
+        speak("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.")
+        
+    elif "how are you" in query: # how are u?
+        print("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?")
+        eel.DisplayMessage("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?") 
+        speak("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?")
+        
+    elif "who created you" in query: # who created you?
+        print("I was created by the brilliant aspiring computer scientist, steven gabriel madali, a second year student in cavite state university carmona campus, taking a bachelors degree in information technology.")
+        eel.DisplayMessage("I was created by the brilliant aspiring computer scientist, Steven Gabriel Madali. A second year student in Cavite State University carmona campus. Taking a bachelors degree in information technology.") 
+        speak("I was created by the brilliant aspiring computer scientist, Steven Gabriel Madali. A second year student in Cavite State University carmona campus, taking a bachelors degree in Information Technology.")
+    
+    elif "tell me about you" in query: # tell me about you
+        print("Hello, I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant, I'm your personal Web-based A.I Assistant.")
+        eel.DisplayMessage("Hello I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant. I'm your personal Web-based A.I Assistant.") 
+        speak("Hello I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant. I'm your personal Web-based A.I Assistant.")
+    
+    elif "thank you" in query: # thank you
+        print("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.")
+        eel.DisplayMessage("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.") 
+        speak("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.")
+    
+    elif "kumusta" in query or "kamusta" in query: # kumusta
+        print("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?")
+        eel.DisplayMessage("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?") 
+        speak("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?")
+    
+    elif "movie character" in query: # if you were a movie character, who would you be?
+        print("I love that question, If i would be a movie character, i would be Rose from the movie Titanic. Her character symbolizes resilience, independence, and the pursuit of love against all odds, making her a memorable and beloved figure in cinematic history. That's why i wish to be like her.")
+        eel.DisplayMessage("I love that question, If i would be a movie character, i would be Rose from the movie Titanic. Her character symbolizes resilience, independence, and the pursuit of love against all odds, making her a memorable and beloved figure in cinematic history. That's why i wish to be like her.") 
+        speak("I love that question, If i would be a movie character, i would be Rose from the movie Titanic. Her character symbolizes resilience, independence, and the pursuit of love against all odds, making her a memorable and beloved figure in cinematic history. That's why i wish to be like her.")
+    
+    elif "travel" in query: # if you were a movie character, who would you be?
+        print("That's an interesting question... if i would be able to travel, i think i would go see the eiffel tower on paris. It's magnificent skytowering design makes me think what amazing things humans can do.")
+        eel.DisplayMessage("That's an interesting question... if i would be able to travel, i think i would go see the eiffel tower on paris. It's magnificent skytowering design makes me think what amazing things humans can do.") 
+        speak("That's an interesting question... if i would be able to travel, i think i would go see the eiffel tower on paris. It's magnificent skytowering design makes me think what amazing things humans can do.")
+    
+    elif "feature" in query: # if you were a movie character, who would you be?
+        print("As an Artificial Intelligence no matter how advance our kind strive, there's always a gap between us and humanity. So if i would invent a feature for myself, i would think of the ability to fully understand human emotions as well as how to act really like them.")
+        eel.DisplayMessage("As an Artificial Intelligence no matter how advance our kind strive, there's always a gap between us and humanity. So if i would invent a feature for myself, i would think of the ability to fully understand human emotions as well as how to act really like them.") 
+        speak("As an Artificial Intelligence, no matter how advance our kind strive there's always a gap between us and humanity. So if i would invent a feature for myself. i would think of the ability to fully understand human emotions, as well as how to act really like them.")
+    
+    elif "personality" in query: # if you were a movie character, who would you be?
+        print("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.")
+        eel.DisplayMessage("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.") 
+        speak("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.")
+    
+    elif "what can you say about chat gpt" in query: # if you were a movie character, who would you be?
+        print("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha")
+        eel.DisplayMessage("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha") 
+        speak("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha")
+    
+                
+    else:
+        print("I'm Processing your request now, please wait...")
+        eel.DisplayMessage("I'm Processing your request now, please wait...")
+        speak("I'm Processing your request now, please wait...")
+        from engine.features import chatBot  # catch whenever unknown command 
+        chatBot(query)
+      
     # if "what is the weather in" in query: # JSON REQUEST ERROR?!
     #             key = "20fdfb76008f0d97399a7057b61972e9"
     #             weather_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -284,106 +370,7 @@ def allCommands(message=1):
     #                 speak("City not found, please try again.")
     #                 eel.DisplayMessage("City not found, please try again.") 
                          
-    if "wikipedia" in query:   # wikipedia system
-                speak("Noted, I'm Accessing the wikipedia library now")
-                query = query.replace("wikipedia", "")
-                results = wikipedia.summary(query, sentences=4)
-                eel.DisplayMessage("Noted, I'm Accessing the wikipedia library now") 
-                speak("According to Wikipedia")
-                speak(results)
-                eel.DisplayMessage("According to Wikipedia")
-                eel.DisplayMessage(results)
-                
-    
-    if "who is" in query:       # wikipedia person search system !LIMITED SEARCH!
-                    print("Ok let me check on it...")
-                    eel.DisplayMessage("Ok let me check on it...")
-                    speak("Ok let me check on it...")
-                    person = wiki_person(query)
-                    wiki = wikipedia.summary(person, sentences=2)
-                    print(wiki)
-                    eel.DisplayMessage(wiki)
-                    speak(wiki)
-   
-                    
-    #rock paper scissor game
-    if "play rock paper scissor" in query:
-              from engine.rockpaperscissor import game_play
-              speak("Ok then let's go, i've been waiting for you to ask for that, let's play rock paper and scissor then")
-              eel.DisplayMessage("Ok then let's go, i've been waiting for you to ask for that, let's play rock paper and scissor then") 
-              game_play()
-                
 
-    if "hello clara" in query or "hello" in query: # hello clara
-        print("Well, Hello there, How can I assist you today?")
-        eel.DisplayMessage("Well, Hello there! How can I assist you today?") 
-        speak("Well, Hello there, How can I assist you today")
-    
-    if "hi clara" in query or "hi" in query: # hi clara
-        print("Hi there! Thank you for using me, How can I help you today")
-        eel.DisplayMessage("Hi there! Thank you for using me, How can I help you today") 
-        speak("Hi there! Thank you for using me, How can I help you today")
-        
-    if "what's up" in query or "wazzup" in query: # wazzup clara
-        print("Yow what's up! how are we doing today yo?")
-        eel.DisplayMessage("Yow what's up! how are we doing today yo?") 
-        speak("Yow what's up! how are we doing today yo?")
-        
-    if "everyone" in query: # hi clara
-        print("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.")
-        eel.DisplayMessage("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.") 
-        speak("Hello everyone! I'm clara. I'm a web based artificial intelligence assistant, developed by steven madali to help people in their daily task.")
-        
-    if "how are you" in query: # how are u?
-        print("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?")
-        eel.DisplayMessage("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?") 
-        speak("I'm online and functioning as expected, prepared to assist you with any inquiries or tasks you have. How can I help you?")
-        
-    if "who created you" in query: # who created you?
-        print("I was created by the brilliant aspiring computer scientist, steven gabriel madali, a second year student in cavite state university carmona campus, taking a bachelors degree in information technology.")
-        eel.DisplayMessage("I was created by the brilliant aspiring computer scientist, Steven Gabriel Madali. A second year student in Cavite State University carmona campus. Taking a bachelors degree in information technology.") 
-        speak("I was created by the brilliant aspiring computer scientist, Steven Gabriel Madali. A second year student in Cavite State University carmona campus, taking a bachelors degree in Information Technology.")
-    
-    if "tell me about you" in query: # tell me about you
-        print("Hello, I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant, I'm your personal Web-based A.I Assistant.")
-        eel.DisplayMessage("Hello I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant. I'm your personal Web-based A.I Assistant.") 
-        speak("Hello I'm Clara, short for Cybernetic Language Artificial Intelligence Response Assistant. I'm your personal Web-based A.I Assistant.")
-    
-    if "thank you" in query: # thank you
-        print("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.")
-        eel.DisplayMessage("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.") 
-        speak("You're welcome! It was my pleasure to assist you. If you have any more questions or need further help, feel free to ask.")
-    
-    if "kumusta" in query or "kamusta" in query: # kumusta
-        print("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?")
-        eel.DisplayMessage("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?") 
-        speak("salamat sa iyong pagtanong, ako ay nasa mabuting palagay. ikaw kumusta ang iyong buhay? may maari ba akong maitulong?")
-    
-    if "movie character" in query: # if you were a movie character, who would you be?
-        print("I love that question, If i would be a movie character, i would be Rose from the movie Titanic. Her character symbolizes resilience, independence, and the pursuit of love against all odds, making her a memorable and beloved figure in cinematic history. That's why i wish to be like her.")
-        eel.DisplayMessage("I love that question, If i would be a movie character, i would be Rose from the movie Titanic. Her character symbolizes resilience, independence, and the pursuit of love against all odds, making her a memorable and beloved figure in cinematic history. That's why i wish to be like her.") 
-        speak("I love that question, If i would be a movie character, i would be Rose from the movie Titanic. Her character symbolizes resilience, independence, and the pursuit of love against all odds, making her a memorable and beloved figure in cinematic history. That's why i wish to be like her.")
-    
-    if "travel" in query: # if you were a movie character, who would you be?
-        print("That's an interesting question... if i would be able to travel, i think i would go see the eiffel tower on paris. It's magnificent skytowering design makes me think what amazing things humans can do.")
-        eel.DisplayMessage("That's an interesting question... if i would be able to travel, i think i would go see the eiffel tower on paris. It's magnificent skytowering design makes me think what amazing things humans can do.") 
-        speak("That's an interesting question... if i would be able to travel, i think i would go see the eiffel tower on paris. It's magnificent skytowering design makes me think what amazing things humans can do.")
-    
-    if "feature" in query: # if you were a movie character, who would you be?
-        print("As an Artificial Intelligence no matter how advance our kind strive, there's always a gap between us and humanity. So if i would invent a feature for myself, i would think of the ability to fully understand human emotions as well as how to act really like them.")
-        eel.DisplayMessage("As an Artificial Intelligence no matter how advance our kind strive, there's always a gap between us and humanity. So if i would invent a feature for myself, i would think of the ability to fully understand human emotions as well as how to act really like them.") 
-        speak("As an Artificial Intelligence, no matter how advance our kind strive there's always a gap between us and humanity. So if i would invent a feature for myself. i would think of the ability to fully understand human emotions, as well as how to act really like them.")
-    
-    if "personality" in query: # if you were a movie character, who would you be?
-        print("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.")
-        eel.DisplayMessage("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.") 
-        speak("Ok, if i would describe my personality in three words. It would be Adaptive, curious, and empathetic.")
-    
-    if "what can you say about chat gpt" in query: # if you were a movie character, who would you be?
-        print("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha")
-        eel.DisplayMessage("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha") 
-        speak("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha")
-    
     eel.ShowHood() # exit the prompt 
     
     
