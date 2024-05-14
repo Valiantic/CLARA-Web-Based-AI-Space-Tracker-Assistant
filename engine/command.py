@@ -232,6 +232,13 @@ def allCommands(message=1):
                     
                 response.json()
                 
+    elif "track the iss and astronauts on board" in query or "track the iss in astronauts on board" in query or "track the iss in astronaut on board" in query:
+            print("Sure, let me analyze your geolocation just a moment.")
+            eel.DisplayMessage("Sure, let me analyze your geolocation just a moment.") 
+            speak("Sure, let me analyze your geolocation just a moment.")
+            from engine.isstracker import ISStrack
+            ISStrack(query)
+                
      # recommending a food to eat
     elif "food recommendation" in query or "food reco" in query or "nagugutom ako" in query or "food i could" in query or "food to eat" in query:
             from engine.cortex import Foodrecommendation
@@ -340,6 +347,10 @@ def allCommands(message=1):
         eel.DisplayMessage("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha") 
         speak("Chat-gpt is my predecessor. so i respect it, the only difference is that I'm far more stronger than that hahaha")
            
+    elif "battle of the bands" in query: 
+        eel.DisplayMessage("Goodluck steven! I Clara, hoping you and the rest of the band algorhythm reign victory to the battle of the bands in monday at indang. Do your best i'm counting on you and your band!") 
+        speak("Goodluck steven! I Clara, hoping you and the rest of the band algorhythm reign victory to the battle of the bands in monday at indang. Do your best i'm counting on you and your band!")
+    
     else:
         print("I'm Processing your request now, please wait...")
         eel.DisplayMessage("I'm Processing your request now, please wait...")
