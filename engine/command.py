@@ -157,7 +157,7 @@ def allCommands(message=1):
                     eel.DisplayMessage("It appears that the data query has encountered an issue due to incorrect input. Please provide valid data, and I be happy to assist you further.")  
                     print(*"a"[1:5],sep=',')       
         
-    elif "check internet" in query: # internet speedtest
+    elif "check internet" in query or "internet speed test" in query or "check my internet" in query: # internet speedtest
                 speak("Got it, i'm measuring your internet speed now")
                 eel.DisplayMessage("Testing your internet speed, please wait...") 
                 print('Testing your internet speed, please wait...')
@@ -232,12 +232,31 @@ def allCommands(message=1):
                     
                 response.json()
                 
-    elif "track the iss and astronauts on board" in query or "track the iss in astronauts on board" in query or "track the iss in astronaut on board" in query:
+    elif "what can you do" in query:
+            print("Well, i can pretty do many things. i have the mathematical ability to solve almost anything in a blink of an eye. measure your internet speed. play videos on youtube using only vocal commands. as well as opening websites too. i can also operate whatsapp. provide you news from local to international. i can also play rock, paper and scissors with you. and my primary function is to track the iss straight from the outer space. wanna see me do it? well dare me.")
+            eel.DisplayMessage("Well, i can pretty do many things. i have the mathematical ability to solve almost anything in a blink of an eye. measure your internet speed. play videos on youtube using only vocal commands. as well as opening websites too. i can also operate whatsapp. provide you news from local to international. i can also play rock, paper and scissors with you. and my primary function is to track the iss straight from the outer space. wanna see me do it? well dare me.") 
+            speak("Well, i can pretty do many things. i have the mathematical ability to solve almost anything in a blink of an eye. measure your internet speed. play videos on youtube using only vocal commands. as well as opening websites too. i can also operate whatsapp. provide you news from local to international. i can also play rock, paper and scissors with you. and my primary function is to track the iss straight from the outer space. wanna see me do it? well dare me.")
+                
+    elif "track the iss and astronauts on board" in query or "track the iss in astronauts on board" in query or "track the iss in astronaut on board" in query or "track the iss" in query:
             print("Sure, let me analyze your geolocation just a moment.")
             eel.DisplayMessage("Sure, let me analyze your geolocation just a moment.") 
             speak("Sure, let me analyze your geolocation just a moment.")
             from engine.isstracker import ISStrack
             ISStrack(query)
+            
+    elif "astronomical picture" in query:
+            print("Okay, give me a minute to access NASA archives")
+            eel.DisplayMessage("Okay, give me a minute to access NASA archives") 
+            speak("Okay, give me a minute to access NASA archives")
+            from engine.nasa_apod import Apod
+            Apod(query)
+                     
+    elif "mars rover" in query:
+            print("Got it, I'am now accessing NASA latest rover imagery on mars.")
+            eel.DisplayMessage("Got it, I'am now accessing NASA latest rover imagery on mars.") 
+            speak("Got it, I'm accessing NASA latest rover imagery on mars.")
+            from engine.rover import mainrover
+            mainrover(query)
                 
      # recommending a food to eat
     elif "food recommendation" in query or "food reco" in query or "nagugutom ako" in query or "food i could" in query or "food to eat" in query:
@@ -350,6 +369,10 @@ def allCommands(message=1):
     elif "battle of the bands" in query: 
         eel.DisplayMessage("Goodluck steven! I Clara, hoping you and the rest of the band algorhythm reign victory to the battle of the bands in monday at indang. Do your best i'm counting on you and your band!") 
         speak("Goodluck steven! I Clara, hoping you and the rest of the band algorhythm reign victory to the battle of the bands in monday at indang. Do your best i'm counting on you and your band!")
+        
+    elif "i'm juan" in query: 
+        eel.DisplayMessage("Hello there juan! nice to meet you i'm clara. it's really nice to see another artificial intelligence assistant today") 
+        speak("Hello there juan! nice to meet you i'm clara. it's really nice to see another artificial intelligence assistant today")
     
     else:
         print("I'm Processing your request now, please wait...")
