@@ -1,2 +1,1 @@
-C.L.A.R.A is a web-based artificial intelligence assistant project i've been working on. It has many features and abilities that can help people, it could either solve complex
-questions or help in minimal task.
+C.L.A.R.A is a web-based artificial intelligence assistant capable of solving complex problems in a matter of seconds. Supported with Mistral LLM using Huggingchat API. Her primary function is to detect the International Space Station straight from other space. She can also fetch images across the universe gathered by satellites and rovers from different planets and beyond.
