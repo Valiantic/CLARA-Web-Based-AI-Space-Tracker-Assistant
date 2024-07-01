@@ -8,7 +8,7 @@ from engine.command import speak
 
 def Apod(query):
     # NASA API Key
-    api_key = "Pa41EKygcE2L3n3DImI43fXEc445gGyKqwYQO2k4"
+    api_key = "yourkey"
 
     # Generate a random date
     start_date = datetime.date(1995, 6, 16)
