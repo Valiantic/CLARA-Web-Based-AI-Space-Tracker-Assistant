@@ -10,6 +10,9 @@ import speedtest # internet speedtest
 import wikipedia # search through wikipedia
 import time # for delay 
 
+import cv2 # for gesture tracker
+import mediapipe as mp # for gesture tracker
+
 
 # wolframealpha client
 appId = '5R49J7-J888YX9J2V'   # api id for wolframalpha
@@ -96,6 +99,19 @@ def wiki_person(text):  # wikipedia person or thing
     for i in range(0, len(list_wiki)):
         if i + 3 <= len(list_wiki) - 1 and list_wiki[i].lower() == "who" and list_wiki[i + 1].lower() == "is":
             return list_wiki[i + 2] + " " + list_wiki[i + 3]
+        
+def get_weather(city): # weather function
+    api_key = "20fdfb76008f0d97399a7057b61972e9"  # Replace with your OpenWeatherMap API key
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    response = requests.get(url)
+    weather_data = json.loads(response.text)
+
+    if response.status_code == 200:
+        temperature = weather_data["main"]["temp"]
+        description = weather_data["weather"][0]["description"]
+        speak(f"The temperature in {city} is {temperature} degrees Celsius, and it is {description}.")
+    else:
+        speak("Error fetching weather data.")
 
 @eel.expose # allows access to js files
 def allCommands(message=1):
@@ -237,6 +253,7 @@ def allCommands(message=1):
             eel.DisplayMessage("Well, i can pretty do many things. i have the mathematical ability to solve almost anything in a blink of an eye. measure your internet speed. play videos on youtube using only vocal commands. as well as opening websites too. i can also operate whatsapp. provide you news from local to international. i can also play rock, paper and scissors with you. and my primary function is to track the iss straight from the outer space. wanna see me do it? well dare me.") 
             speak("Well, i can pretty do many things. i have the mathematical ability to solve almost anything in a blink of an eye. measure your internet speed. play videos on youtube using only vocal commands. as well as opening websites too. i can also operate whatsapp. provide you news from local to international. i can also play rock, paper and scissors with you. and my primary function is to track the iss straight from the outer space. wanna see me do it? well dare me.")
                 
+                
     elif "track the iss and astronauts on board" in query or "track the iss in astronauts on board" in query or "track the iss in astronaut on board" in query or "track the iss" in query:
             print("Sure, let me analyze your geolocation just a moment.")
             eel.DisplayMessage("Sure, let me analyze your geolocation just a moment.") 
@@ -294,6 +311,16 @@ def allCommands(message=1):
               speak("Ok then let's go, i've been waiting for you to ask for that, let's play rock paper and scissor then")
               eel.DisplayMessage("Ok then let's go, i've been waiting for you to ask for that, let's play rock paper and scissor then") 
               game_play()
+              
+     #weather feature
+    elif "weather" in query:
+            speak("Checking weather status using openweathermap")
+            eel.DisplayMessage("Fetching weather data...") 
+            try: 
+                city = query.split("in")[-1].strip()
+                get_weather(city)
+            except:
+                speak("I didn't hear a city name please try again.")
                 
     # random conversational modules
     elif "hello clara" in query or "hello" in query: # hello clara
@@ -382,7 +409,7 @@ def allCommands(message=1):
         chatBot(query)
       
     # if "what is the weather in" in query: # JSON REQUEST ERROR?!
-    #             key = "20fdfb76008f0d97399a7057b61972e9"
+    #             key = "apikey"
     #             weather_url = "http://api.openweathermap.org/data/2.5/weather?"
     #             ind = query.split().index("in")
     #             location = query.split()[ind + 1:]
