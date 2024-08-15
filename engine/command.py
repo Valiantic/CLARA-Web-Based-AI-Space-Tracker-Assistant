@@ -274,6 +274,13 @@ def allCommands(message=1):
             speak("Got it, I'm accessing NASA latest rover imagery on mars.")
             from engine.rover import mainrover
             mainrover(query)
+            
+    elif "simulate rocket control system" in query:
+            print("Simulating rocket control system...")
+            eel.DisplayMessage("Simulating rocket control system...") 
+            speak("Simulating rocket control system...")
+            from engine.rocket_control_system import simulateRocket
+            simulateRocket(query)
                 
      # recommending a food to eat
     elif "food recommendation" in query or "food reco" in query or "nagugutom ako" in query or "food i could" in query or "food to eat" in query:
